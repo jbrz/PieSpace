@@ -1,12 +1,12 @@
-let ListController = function($scope, PieService) {
+let ListController = function($scope, PARSE, $http, PieService) {
   
 
   PieService.getPies().then ( (res) => {
+    console.log($scope.pies);
     $scope.pies = res.data.results;
   });
-  console.log($scope.pies);
 };
 
-ListController.$inject = ['$scope', 'PieService'];
+ListController.$inject = ['$scope', 'PARSE', '$http', 'PieService'];
 
 export default ListController;

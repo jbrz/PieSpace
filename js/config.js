@@ -13,26 +13,26 @@ let config = function($stateProvider, $urlRouterProvider) {
         content: {
           controller: 'ListController',
           templateUrl: 'templates/list.tpl.html'
+        },
+        music: {
+          controller: 'MusicController',
+          templateUrl: 'templates/listMusic.tpl.html'
+        },
+        thumbs: {
+          controller: 'PieThumbController',
+          templateUrl: 'templates/listThumb.tpl.html'
+        },
+        events: {
+          controller: 'EventController',
+          templateUrl: 'templates/listEvent.tpl.html'
+        },
+        form: {
+          controller: 'AddController',
+          templateUrl: 'templates/add.tpl.html'
         }
-        // music: {
-        //   controller: 'MusicController',
-        //   templateUrl: 'templates/listMusic.tpl.html'
-        // },
-        // thumbs: {
-        //   controller: 'PieThumbController',
-        //   templateUrl: 'templates/listThumb.tpl.html'
-        // },
-        // events: {
-        //   controller: 'EventController',
-        //   templateUrl: 'templates/listEvent.tpl.html'
-        // },
-        // form: {
-        //   controller: 'AddController',
-        //   templateUrl: 'templates/add.tpl.html'
-        // }
       }
     })
-    .state('root.stove', {
+    .state('root.single', {
       url: '/single/:pieId',
       controller: 'SingleController',
       templateUrl: 'templates/single.tpl.html'

@@ -8,13 +8,17 @@
   <section class="top-bar-section">
     <ul class="right">
       <li><a href="#/">Home</a></li>
-      <li><a href="#/stove">Profile</a></li>
-      <li><a href="#/Pies"></a></li>
+      <li><a href="#/single">Profile</a></li>
+      <li><a href="#/"></a></li>
     </ul>
   </section>
 </nav>
 
-<section class="container" ui-view></section>
+<aside class="events" ui-view="events"></aside>
+<aside class="thumbs" ui-view="thumbs"></aside>
+
+<section class="container" ui-view="content"></section>
+<aside class="music" ui-view="music"></aside>
 
 
 <footer class="top-bar">

@@ -1,13 +1,13 @@
-## Welcome to My Project
+# Welcome to Pie Space
 
-> I am your Readme.md file, you should probably update me.
+> Any likeness to other, more popular social media websites are PURELY COINCIDENCE.  Or something.
 
 
-## Usage
+## Background
 
-- Clone this repo
-- Run `npm install` to install all necessary dependencies
-- Run `gulp start` to start the server and a handful of other tasks
+- This site is built on/with (whatever the proper preposition is) [Angular](https://angularjs.org/)
+- When cloning, be sure to `npm install` not only `angular`, but `angular-ui-router` and `angular-foundation`.
+-
 
 
 ## Assets Installed By Default
@@ -44,3 +44,7 @@ At the top of your `main.scss` file, just import any of the following:
 - [SASS](http://sass-lang.com/)
 - [Mocha](https://mochajs.org/)
 - [Chai](http://chaijs.com/)
+
+## Contact
+www.brzinski.com
+Josh@Brzinski.com

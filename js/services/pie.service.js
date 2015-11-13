@@ -1,4 +1,4 @@
-let PieService = function(PARSE,$https) {
+let PieService = function(PARSE,$http) {
 
   let url = PARSE.URL + 'classes/Pies';
 
@@ -21,7 +21,7 @@ let PieService = function(PARSE,$https) {
     if (checkAuth()){      
       return $http({
         method: 'GET',
-        url: url + '/' + whiskeyId,
+        url: url + '/' + pieId,
         headers: PARSE.CONFIG.headers,
         cache: true
       });
@@ -54,13 +54,14 @@ let PieService = function(PARSE,$https) {
     return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
   };
 
-  let flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=';
-  let flickrAPI = '&format=json&nojsoncallback=1&api_key=57c877e8365ae62778a875778fe29243';
-  let query = pies.Name;
+  // Flickr Pictures 
+  // let flickrURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=';
+  // let flickrAPI = '&format=json&nojsoncallback=1&api_key=57c877e8365ae62778a875778fe29243';
+  // let query = pies.Name;
 
-  this.getflickrURL = function(flickrURL, flickrAPI) {
+  // this.getflickrURL = function(flickrURL, flickrAPI) {
 
-  };
+  // };
 };
 
 PieService.$inject = ['$http', 'PARSE'];

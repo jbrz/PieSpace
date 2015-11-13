@@ -1,4 +1,4 @@
-let PieService = function(PARSE,$http) {
+let PieService = function(PARSE, $http) {
 
   let url = PARSE.URL + 'classes/Pies';
 

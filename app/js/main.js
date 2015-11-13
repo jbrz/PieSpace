@@ -63,6 +63,7 @@ var AddController = function AddController($scope, $http, PARSE) {
 
   var Pie = function Pie(obj) {
     this.name = obj.name;
+    this.madeBy = obj.maker;
     this.parts = obj.parts;
     this.hasTried = false;
     this.description = obj.desc;
@@ -105,8 +106,8 @@ Object.defineProperty(exports, '__esModule', {
 var ListController = function ListController($scope, PARSE, $http, PieService) {
 
   PieService.getPies().then(function (res) {
-    console.log($scope.pies);
     $scope.pies = res.data.results;
+    console.log($scope.pies);
   });
 };
 

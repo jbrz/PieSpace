@@ -9,6 +9,42 @@ body {
 
 .container {
   margin: 20px auto;
+  width: 40%;
+}
+
+.audio {
+  background-color: #008cba;
+  padding: 15px 10px 10px 10px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: white;
+  span {
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 6px;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+}
+
+.addPie {
+  width: 100%;
+  .form {
+    width: 100%;
+    line-height: 1.6em;
+  }
+}
+
+.thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.pi {
+  max-width: 50px;
+  max-height: 50px;
 }
 
 footer {

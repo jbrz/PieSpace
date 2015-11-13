@@ -4,6 +4,7 @@ let AddController = function($scope, $http, PARSE) {
 
   let Pie = function (obj) {
     this.name = obj.name;
+    this.madeBy = obj.maker;
     this.parts = obj.parts;
     this.hasTried = false;
     this.description = obj.desc;

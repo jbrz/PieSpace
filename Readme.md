@@ -7,7 +7,6 @@
 
 - This site is built on/with (whatever the proper preposition is) [Angular](https://angularjs.org/)
 - When cloning, be sure to `npm install` not only `angular`, but `angular-ui-router` and `angular-foundation`.
--
 
 
 ## Assets Installed By Default

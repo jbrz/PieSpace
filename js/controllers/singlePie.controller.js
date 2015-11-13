@@ -1,10 +1,10 @@
 let SingleController = function($scope, $stateParams, $http, PARSE) {
   
-  let url = PARSE.URL + 'classes/pie/' + $stateParams.pieId;
+  let url = PARSE.URL + 'classes/Pies' + $stateParams.pieId;
 
   $http.get(url, PARSE.CONFIG).then( (res) => {
-
-    $scope.singlePies = res.data;
+    console.log(res.data.results);
+    $scope.singlePie = res.data.results;
 
   });
 

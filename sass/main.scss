@@ -4,6 +4,25 @@
 
 body {
   background: #e2ebf3;
-  margin: 20px auto;
   position: relative;
+}
+
+.container {
+  margin: 20px auto;
+}
+
+footer {
+  .footer {
+    width: 400px;
+    margin: 0 auto;
+    p {
+      color: white;
+      margin: 10px auto;
+      text-align: center;
+      a {
+        text-decoration: none;
+        color: #FFFFFF;
+      }
+    }
+  }
 }

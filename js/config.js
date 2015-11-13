@@ -7,15 +7,35 @@ let config = function($stateProvider, $urlRouterProvider) {
       abstract: true,
       templateUrl: 'templates/layout.tpl.html'
     })
-    .state('root.windowSill', {
+    .state('root.list', {
       url: '/',
-      controller: 'ListController',
-      templateUrl: 'templates/list.tpl.html'
+      views: {
+        content: {
+          controller: 'ListController',
+          templateUrl: 'templates/list.tpl.html'
+        }
+        // music: {
+        //   controller: 'MusicController',
+        //   templateUrl: 'templates/listMusic.tpl.html'
+        // },
+        // thumbs: {
+        //   controller: 'PieThumbController',
+        //   templateUrl: 'templates/listThumb.tpl.html'
+        // },
+        // events: {
+        //   controller: 'EventController',
+        //   templateUrl: 'templates/listEvent.tpl.html'
+        // },
+        // form: {
+        //   controller: 'AddController',
+        //   templateUrl: 'templates/add.tpl.html'
+        // }
+      }
     })
     .state('root.stove', {
-      url: '/stove/:pieId',
+      url: '/single/:pieId',
       controller: 'SingleController',
-      templateUrl: 'templates/stove.tpl.html'
+      templateUrl: 'templates/single.tpl.html'
     })
     .state('root.add', {
       url: '/add',

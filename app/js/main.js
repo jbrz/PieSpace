@@ -11,14 +11,34 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/layout.tpl.html'
-  }).state('root.windowSill', {
+  }).state('root.list', {
     url: '/',
-    controller: 'ListController',
-    templateUrl: 'templates/list.tpl.html'
+    views: {
+      content: {
+        controller: 'ListController',
+        templateUrl: 'templates/list.tpl.html'
+      }
+      // music: {
+      //   controller: 'MusicController',
+      //   templateUrl: 'templates/listMusic.tpl.html'
+      // },
+      // thumbs: {
+      //   controller: 'PieThumbController',
+      //   templateUrl: 'templates/listThumb.tpl.html'
+      // },
+      // events: {
+      //   controller: 'EventController',
+      //   templateUrl: 'templates/listEvent.tpl.html'
+      // },
+      // form: {
+      //   controller: 'AddController',
+      //   templateUrl: 'templates/add.tpl.html'
+      // }
+    }
   }).state('root.stove', {
-    url: '/stove/:pieId',
+    url: '/single/:pieId',
     controller: 'SingleController',
-    templateUrl: 'templates/stove.tpl.html'
+    templateUrl: 'templates/single.tpl.html'
   }).state('root.add', {
     url: '/add',
     controller: 'AddController',
@@ -34,6 +54,78 @@ module.exports = exports['default'];
 },{}],2:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var AddController = function AddController($scope, $http, PARSE) {
+
+  var url = PARSE.URL + 'classes/Pies';
+
+  var Pie = function Pie(obj) {
+    this.name = obj.name;
+    this.parts = obj.parts;
+    this.hasTried = false;
+    this.description = obj.desc;
+    this.image = this.URL;
+  };
+
+  $scope.addPie = function (obj) {
+    var p = new Pie(obj);
+
+    $http.post(url, p, PARSE.CONFIG).then(function (res) {
+      $scope.pie = {};
+    });
+  };
+};
+
+AddController.$inject = ['$scope', '$http', 'PARSE'];
+
+exports['default'] = AddController;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ListController = function ListController($scope, PieService) {
+
+  PieService.getPies().then(function (res) {
+    $scope.pies = res.data.results;
+  });
+  console.log($scope.pies);
+};
+
+ListController.$inject = ['$scope', 'PieService'];
+
+exports['default'] = ListController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+
+  var url = PARSE.URL + 'classes/Pies' + $stateParams.pieId;
+
+  $http.get(url, PARSE.CONFIG).then(function (res) {
+    console.log(res.data.results);
+    $scope.singlePie = res.data.results;
+  });
+};
+
+SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
+
+exports['default'] = SingleController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
@@ -46,7 +138,17 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-// import Controller from './controllers/controller';
+var _controllersSinglePieController = require('./controllers/singlePie.controller');
+
+var _controllersSinglePieController2 = _interopRequireDefault(_controllersSinglePieController);
+
+var _controllersListPieController = require('./controllers/listPie.controller');
+
+var _controllersListPieController2 = _interopRequireDefault(_controllersListPieController);
+
+var _controllersAddPieController = require('./controllers/addPie.controller');
+
+var _controllersAddPieController2 = _interopRequireDefault(_controllersAddPieController);
 
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: 'https://api.parse.com/1/',
@@ -56,13 +158,9 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'hFi3s0P4Pz1PL2Jq8mEQczOa5rBd3CSzBA3ZQ1LK'
     }
   }
-}).config(_config2['default']);
+}).config(_config2['default']).controller('SingleController', _controllersSinglePieController2['default']).controller('ListController', _controllersListPieController2['default']).controller('AddController', _controllersAddPieController2['default']);
 
-// .controller('AddController', AddController)
-// .controller('ListController', ListController)
-// .controller('SingleController', SingleController)
-
-},{"./config":1,"angular":5,"angular-ui-router":3}],3:[function(require,module,exports){
+},{"./config":1,"./controllers/addPie.controller":2,"./controllers/listPie.controller":3,"./controllers/singlePie.controller":4,"angular":8,"angular-ui-router":6}],6:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4433,7 +4531,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],4:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33338,11 +33436,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":4}]},{},[2])
+},{"./angular":7}]},{},[5])
 
 
 //# sourceMappingURL=main.js.map

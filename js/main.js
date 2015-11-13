@@ -3,7 +3,9 @@ import 'angular-ui-router';
 
 import config from './config';
 
-// import Controller from './controllers/controller';
+import SingleController from './controllers/singlePie.controller';
+import ListController from './controllers/listPie.controller';
+import AddController from './controllers/addPie.controller';
 
 angular
   .module('app', ['ui.router'])
@@ -17,7 +19,7 @@ angular
     }
   })
   .config(config)
-  // .controller('AddController', AddController)
-  // .controller('ListController', ListController)
-  // .controller('SingleController', SingleController)
+  .controller('SingleController', SingleController)
+  .controller('ListController', ListController)
+  .controller('AddController', AddController)
 ;
